@@ -41,3 +41,8 @@ validators/ => check whether incoming data is validation
 main working backend 
 
 frontend -> http request -> routes -> controllers -> models -> mongoDB
+
+
+
+authMiddleware :
+    request -> get token -> jwt.verify() -> find user -> req.user = user -> next()

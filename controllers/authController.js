@@ -1,5 +1,6 @@
 import user from "../models/User.js";
 import bcrypt from "bcrypt";
+import generateToken from "../utils/generateToken.js";
 
 const register = async (req, res) => {
     try {
@@ -94,14 +95,22 @@ const login = async (req, res) => {
             User.password
         );
 
+        
+
         if (!ispasswordCorrect) {
             return res.status(401).json({
                 message: "Invalid email or password ",
             });
         }
 
+        console.log("User ID :" ,User._id);
+
+        const token = generateToken(User._id);
+        
+
         res.status(200).json({
             message: "Login Successfully",
+            token,
             user: {
                 id: User._id,
                 name: User.name,
@@ -119,7 +128,15 @@ const login = async (req, res) => {
     }
 };
 
+const getMe = async (req, res )=>{
+    res.status(200).json({
+        user : req.user,
+    });
+};
+
+
 export {
     register,
-    login
+    login,
+    getMe
 };
