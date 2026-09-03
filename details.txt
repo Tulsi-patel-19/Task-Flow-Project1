@@ -1,0 +1,43 @@
+config/ => database connection and cofigration 
+db.js => connects your express server to mongoDB 
+
+models/ => defines mongoDB collections 
+1. user 
+    name 
+    email
+    password
+    role
+
+2.Project
+    name 
+    desc
+    owner
+    members
+    deadline
+
+3.Task
+    title
+    desc
+    status
+    priority
+    duedate
+    Project
+    assignTo
+
+ controllers/ => actual backend logic goes .
+
+
+ routes/ => defines your API endpoints
+
+
+ middleware/ => functions that run between the request and controller.
+    request -> authMiddleware (check data validation ) -> controller
+
+validators/ => check whether incoming data is validation
+
+
+
+
+main working backend 
+
+frontend -> http request -> routes -> controllers -> models -> mongoDB
