@@ -106,6 +106,7 @@ const updateProject = async (req, res) => {
             });
         }
 
+
         // check the project owner 
 
         if(project.owner.toString() !== req.user._id.toString()){
