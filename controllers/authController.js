@@ -6,11 +6,7 @@ const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        console.log("REGISTER DATA:", {
-            name,
-            email,
-            password
-        });
+
 
         // check required fields
 
@@ -33,11 +29,6 @@ const register = async (req, res) => {
 
         const hashedpassword = await bcrypt.hash(password, 10);
 
-        console.log("DATA BEFORE CREATE:", {
-            name,
-            email,
-            password: hashedpassword
-        });
 
         // create user 
         const User = await user.create({
@@ -103,7 +94,7 @@ const login = async (req, res) => {
             });
         }
 
-        console.log("User ID :" ,User._id);
+
 
         const token = generateToken(User._id);
         
